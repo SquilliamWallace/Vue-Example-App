@@ -1,7 +1,10 @@
 const TodoStore = {
   state: {
     todos: [],
-    index: 0
+    index: 0,
+    title: "",
+    userId: "",
+    completed: true
   },
   deleteTodo: function () {
     this.state.todos.splice(this.state.index, 1);

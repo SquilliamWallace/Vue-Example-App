@@ -1,13 +1,15 @@
 <template>
   <div>
     <div class="text-center">
-      <span>Completed Tasks: {{completedTasks}}</span>
-      <p>Amount To Do: {{notCompletedTasks}}</p>
+      <h4>Task Completion Progress:</h4>
+      <progress-bar type="success" striped active v-model="completedTasks" label></progress-bar>
+      <h4>Incomplete:</h4>
+      <progress-bar type="danger" striped active v-model="notCompletedTasks" label></progress-bar>
     </div>
     <div v-if="this.store.state.todos.length === 0" class="text-center">
       <h1>No Results Found</h1>
     </div>
-    <table v-else class="table table-bordered table-striped">
+    <table v-else class="table table-bordered">
       <tr>
         <th>Title</th>
         <th>User Id</th>
@@ -22,6 +24,7 @@
 <script>
   import Todo from './Todo'
   import TodoStore from "../stores/TodoStore";
+  import ProgressBar from 'uiv/src/components/progressbar/ProgressBar'
 
     export default {
         name: "TodoList",
@@ -39,19 +42,24 @@
           }
       },
       components: {
-          Todo
+          Todo,
+        ProgressBar
       },
       computed: {
           completedTasks: function() {
-            return this.todos.filter(todo => {return todo.done}).length
+            let progress = this.store.state.todos.filter(todo => {return todo.completed}).length
+            return Math.round((progress/this.store.state.todos.length)*100);
           },
           notCompletedTasks: function() {
-            return this.todos.filter(todo => {return !todo.done}).length
+            let notProgress = this.store.state.todos.filter(todo => {return !todo.completed}).length
+            return Math.round((notProgress/this.store.state.todos.length)*100);
           }
       },
     }
 </script>
 
 <style scoped>
-
+.text-center{
+  padding-top: 50px;
+}
 </style>

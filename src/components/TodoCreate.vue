@@ -1,18 +1,14 @@
 <template>
   <div>
-      <!--<input type="text" class="form-control" placeholder="Search for a Todo:" aria-label="Todo" v-model="title">-->
-      <!--<div class="input-group-addon">-->
-        <!--<input id="compSCheck" type="checkbox" aria-label="Already Completed?" v-model="done">-->
-      <!--</div>-->
       <div class="input-group-btn">
-        <select class="form-control" style="min-width:150px;" v-model="userId">
+        <select class="form-control" style="min-width:750px;" v-model="userId">
           <option selected>Select a User ID</option>
           <option v-for="i in 10">{{i}}</option>
         </select>
         <btn type="primary" v-on:click="findTodo">
           <i class="fa fa-1x fa-search"> Search</i>
         </btn>
-        <btn type="success"  data-toggle="modal"  data-target="#exampleModal">
+        <btn type="success" data-toggle="modal" data-target="#exampleModal">
         <i class="fa fa-1x fa-plus-square"> Create</i>
         </btn>
       </div>
@@ -26,17 +22,7 @@
                 </button>
               </div>
               <div class="modal-body">
-                <div class="input-group">
-                  <input type="text" class="form-control" placeholder="Todo:" aria-label="Todo" v-model="title">
-                  <div class="input-group-addon">
-                    <input id="compCheck" type="checkbox" aria-label="Already Completed?" v-model="done">
-                  </div>
-                  <div class="input-group-btn">
-                    <select class="form-control" style="min-width:150px;" v-model="userId">
-                      <option selected>Select a User ID</option>
-                      <option v-for="i in 10">{{i}}</option>
-                    </select>
-              </div>
+                <todo-creedit></todo-creedit>
                 </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -45,7 +31,6 @@
             </div>
           </div>
         </div>
-        </div>
   </div>
 </template>
 
@@ -53,12 +38,24 @@
     import TodoStore from "../stores/TodoStore";
     import {Btn} from 'uiv';
     import {Modal} from 'uiv';
+    import {Popover} from 'uiv';
+    import {Tooltip} from 'uiv';
+    import TodoCreedit from './TodoCreedit'
 
     export default {
         name: "TodoCreate",
       components:{
           Btn,
-        Modal
+        Modal,
+        TodoCreedit,
+        Tooltip,
+        Popover
+      },
+      data(){
+          return{
+            store: TodoStore,
+            userId: ""
+          }
       },
       methods: {
         createTodo: function() {
@@ -67,19 +64,13 @@
         findTodo: function() {
           this.store.findTodo(this.userId)
         }
-      },
-      data() {
-        return {
-          title: "No Title",
-          userId: "No Id Selected",
-          done: true,
-          store: TodoStore
-        }
       }
     }
 
 </script>
 
 <style scoped>
-
+  .input-group-btn {
+    position: fixed;
+  }
 </style>
