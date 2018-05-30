@@ -5,7 +5,7 @@
       <td v-if="todo.completed === true">Yes</td>
       <td v-else>No</td>
       <td>
-        <div role="group" class="pull-right">
+        <div role="group">
           <button class='btn btn-warning' v-on:click="editTodo">
             <i class="fa fa-1x fa-edit"> Edit</i>
           </button>

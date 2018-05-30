@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="text-center">
+    <div class="prog">
       <h4>Task Completion Progress:</h4>
       <progress-bar type="success" striped active v-model="completedTasks" label></progress-bar>
       <h4>Incomplete:</h4>
@@ -9,14 +9,16 @@
     <div v-if="this.store.state.todos.length === 0" class="text-center">
       <h1>No Results Found</h1>
     </div>
-    <table v-else class="table table-bordered">
+    <table v-else class="table table-bordered text-center">
       <tr>
-        <th>Title</th>
-        <th>User Id</th>
-        <th>Complete</th>
-        <th></th>
+        <th class="text-center">Title</th>
+        <th class="text-center">User Id</th>
+        <th  class="text-center">Complete</th>
+        <th class="text-center">Actions</th>
       </tr>
-      <todo v-for="todo in todos" :todo="todo" :key="todo.id"></todo>
+      <tbody class="bod">
+        <todo v-for="todo in todos" :todo="todo" :key="todo.id"></todo>
+      </tbody>
     </table>
   </div>
 </template>
@@ -59,7 +61,11 @@
 </script>
 
 <style scoped>
-.text-center{
+.prog{
+  text-align: center;
   padding-top: 50px;
+}
+.text-center{
+  padding-top: 20px;
 }
 </style>
