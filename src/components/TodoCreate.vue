@@ -54,7 +54,9 @@
       data(){
           return{
             store: TodoStore,
-            userId: ""
+            userId: "",
+            selected: [],
+            options: []
           }
       },
       methods: {

@@ -1,15 +1,15 @@
 <template>
   <div>
     <div class="prog">
-      <h4>Task Completion Progress:</h4>
+      <h4>Completed Tasks:</h4>
       <progress-bar type="success" striped active v-model="completedTasks" label></progress-bar>
-      <h4>Incomplete:</h4>
+      <h4>Incomplete Tasks:</h4>
       <progress-bar type="danger" striped active v-model="notCompletedTasks" label></progress-bar>
     </div>
     <div v-if="this.store.state.todos.length === 0" class="text-center">
       <h1>No Results Found</h1>
     </div>
-    <table v-else class="table table-bordered text-center">
+    <table v-else class="table table-bordered table-striped text-center">
       <tr>
         <th class="text-center">Title</th>
         <th class="text-center">User Id</th>

@@ -1,18 +1,17 @@
 <template>
   <div class="app">
-    <div class="panel panel-default">
-      <div class="panel-content">
+    <div class="panel panel-primary">
         <div class="panel-heading">
           <div class="panel-title">
-            <todo-create></todo-create>
+            Stuff You Need to Get Done
           </div>
         </div>
         <div class="panel-body">
+          <todo-create></todo-create>
           <todo-list :todos="this.store.state.todos"></todo-list>
         </div>
       </div>
     </div>
-  </div>
 </template>
 
 <script>

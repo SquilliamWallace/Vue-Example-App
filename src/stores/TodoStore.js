@@ -38,7 +38,10 @@ const TodoStore = {
       }
     })
       .then(response => response.json())
-      .then(json => console.log(json))
+      .then(json => {
+        console.log(json);
+        this.state.todos[index] = json
+      })
   },
   findTodo: function (userId) {
     fetch('https://jsonplaceholder.typicode.com/todos?userId=' + userId)
