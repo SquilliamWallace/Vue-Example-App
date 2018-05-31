@@ -12,9 +12,6 @@
           <button class='btn btn-danger' v-on:click="deleteTodo">
             <i class="fa fa-1x fa-trash"> Delete</i>
           </button>
-        <button class='btn btn-secondary' v-on:click="createTodoApi">
-          <i class="fa fa-1x fa-exclamation"> Test</i>
-        </button>
       </div>
       </td>
   </tr>

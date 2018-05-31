@@ -17,7 +17,7 @@
         <th class="text-center">Actions</th>
       </tr>
       <tbody class="bod">
-        <todo v-for="todo in todos" :todo="todo" :key="todo.id"></todo>
+        <todo v-for="(todo, idx) in todos" :todo="todo" :key=idx></todo>
       </tbody>
     </table>
   </div>

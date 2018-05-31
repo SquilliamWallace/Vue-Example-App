@@ -4,7 +4,8 @@ const TodoStore = {
     index: 0,
     title: "",
     userId: "",
-    completed: true
+    completed: true,
+    editToggle: false
   },
   deleteTodo: function () {
     this.state.todos.splice(this.state.index, 1);

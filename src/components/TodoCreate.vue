@@ -8,30 +8,19 @@
           </btn>
         </span>
       <span class="input-group-btn">
-          <btn type="success" data-toggle="modal" data-target="#exampleModal">
+          <btn type="success" @click="open=true">
             <i class="fa fa-1x fa-plus-square"> Create</i>
           </btn>
         </span>
     </div>
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4 class="modal-title" id="exampleModalLabel">Create a Todo</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <todo-creedit></todo-creedit>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" data-dismiss="modal" v-on:click="createTodo">Save changes</button>
-          </div>
-        </div>
+    <modal v-model="open">
+      <span slot="title"><i class="fa fa-check-square"></i> Add a Todo</span>
+      <todo-creedit></todo-creedit>
+      <div slot="footer">
+        <btn @click="open=false">Close</btn>
+        <btn type="primary" @click="createTodo">Create</btn>
       </div>
-    </div>
+    </modal>
   </div>
 </template>
 
@@ -70,16 +59,17 @@
           {value:8, label:'User8'},
           {value:9, label:'User9'},
           {value:10, label:'User10'},
-        ]
+        ],
+        open: false
       }
     },
     methods: {
       createTodo: function() {
         this.store.createTodo(this.title, this.userId, this.done);
+        this.open=false;
       },
       findTodo: function() {
-        console.log(this.selected[0].value)
-        this.store.findTodo(this.selected[0].value)
+        this.store.findTodo(this.selected[0])
       },
       // getUserIds: function() {
       //     var tempTodo = []
