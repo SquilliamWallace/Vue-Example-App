@@ -26,6 +26,7 @@
 <script>
   import Todo from './Todo'
   import TodoStore from "../stores/TodoStore";
+  import TodoCreedit from './TodoCreedit'
   import ProgressBar from 'uiv/src/components/progressbar/ProgressBar'
 
     export default {
@@ -44,8 +45,9 @@
           }
       },
       components: {
-          Todo,
-        ProgressBar
+        Todo,
+        ProgressBar,
+        TodoCreedit
       },
       computed: {
           completedTasks: function() {

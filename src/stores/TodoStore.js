@@ -26,6 +26,7 @@ const TodoStore = {
   },
   editTodo: function (index) {
     alert("you sure you wanna change this jawn?");
+    this.editSwap()
     fetch('https://jsonplaceholder.typicode.com/todos/1', {
       method: 'PUT',
       body: JSON.stringify({
@@ -67,6 +68,9 @@ const TodoStore = {
       .then(response => response.json())
       .then(json => console.log(json))
 
+  },
+  editSwap: function () {
+    this.state.editToggle=!this.state.editToggle
   }
 }
 export default TodoStore
