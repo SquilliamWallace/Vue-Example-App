@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="input-group header-input">
-      <multi-select class="multi" v-model="selected" :options="options"/>
+      <multi-select class="multi" v-model="selected" :options="options" block></multi-select>
       <span class="input-group-btn">
           <btn type="primary" v-on:click="findTodo">
             <i class="fa fa-1x fa-search"> Search</i>
@@ -70,17 +70,8 @@
       },
       findTodo: function() {
         this.store.findTodo(this.selected[0])
-      },
-      // getUserIds: function() {
-      //     var tempTodo = []
-      //     this.state.listTodos()
-      //     for(var i=0;i<tempTodo.length; i++){
-      //       tempTodo.push(this.state.todos[i].userId)
-      //     }
-      //     console.log(tempTodo)
-      //     return tempTodo
-      //   }
       }
+    }
   }
 
 </script>
@@ -88,10 +79,6 @@
 <style scoped>
   .header-input {
     position: fixed;
-    padding-right: 175px;
-  }
-  .multi {
-    min-width: 1085px;
-    max-width: 1085px;
+    padding-right: 150px;
   }
 </style>
