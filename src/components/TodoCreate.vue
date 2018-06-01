@@ -80,5 +80,6 @@
   .header-input {
     position: fixed;
     padding-right: 150px;
+    max-width: 1200px;
   }
 </style>
