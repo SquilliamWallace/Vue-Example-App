@@ -6,7 +6,7 @@
       <td v-else>No</td>
       <td>
         <div v-if="this.store.state.editToggle===false" role="group">
-          <button class='btn btn-warning' v-on:click="editTodo">
+          <button class='btn btn-warning' v-on:click="editSwap">
             <i class="fa fa-1x fa-edit"> Edit</i>
           </button>
           <button class='btn btn-danger' v-on:click="deleteTodo">
@@ -16,7 +16,7 @@
         <div v-else>
           <todo-creedit></todo-creedit>
           <span class="input-group-btn">
-          <btn type="success" @click="editSwap">
+          <btn type="success" @click="editTodo(1)">
             <i class="fa fa-1x fa-save"> Save</i>
           </btn>
         </span>
